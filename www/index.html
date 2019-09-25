@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Sonic 3 Save Editor</title>
+<meta charset="utf-8">
+<meta name="title" content="Sonic 3 Save Editor">
+<meta name="description" content="Edits save files for Sonic 3 and Sonic 3 &amp; Knuckles.">
+<link href="mailto:jcfields@jcfields.dev" rel="author" title="J.C. Fields">
+<link href="layout/style.css" media="screen" rel="stylesheet" type="text/css">
+<link href="layout/favicon.png" rel="shortcut icon" type="image/png">
+<link href="layout/homeicon.png" rel="apple-touch-icon-precomposed" type="image/png">
+<script src="saveedit.js" type="text/javascript"></script></head>
+<body><header><h1><span class="title">Sonic 3</span> Save Editor</h1></header>
+<main><noscript><p>Must have JavaScript enabled.</p></noscript>
+<section id="load"><h2>Load Game</h2>
+<div><label>Open file: <input type="file" id="file" accept=".sav, .srm, .bin"></label></div>
+<div><label><input type="checkbox" id="advanced"> Show advanced options.</label></div>
+<div id="platform">
+	<button type="button" value="0" title="Console&mdash;Supports emulator saves." id="console" class="platform active">Console</button>
+	<button type="button" value="1" title="Everdrive&mdash;Supports the Everdrive flash cartridge." id="everdrive" class="platform">Everdrive</button>
+	<button type="button" value="2" title="PC&mdash;Supports the Sonic &amp; Knuckles Collection." id="pc" class="platform">PC</button>
+	<button type="button" value="3" title="Steam&mdash;Supports the Sega Mega Drive &amp; Genesis Classics version." id="steam" class="platform">Steam</button>
+	<button type="button" value="4" title="A.I.R.&mdash;Supports Sonic 3: Angel Island Revisited." id="air" class="platform">A.I.R.</button>
+</div></section>
+<section id="singlePlayer"><h2>Single-Player</h2>
+<div id="tabs"><div><button type="button" value="0" id="sonic3" class="tab game">Sonic 3</button>
+<button type="button" value="1" id="sonic3k" class="tab game active">Sonic 3 &amp; Knuckles</button></div>
+<div><button type="button" value="0" class="tab slot active">1</button>
+<button type="button" value="1" class="tab slot">2</button>
+<button type="button" value="2" class="tab slot">3</button>
+<button type="button" value="3" class="tab slot">4</button>
+<button type="button" value="4" class="tab slot">5</button>
+<button type="button" value="5" class="tab slot">6</button>
+<button type="button" value="6" class="tab slot">7</button>
+<button type="button" value="7" class="tab slot">8</button></div></div>
+<table id="s3" hidden="hidden">
+	<thead><tr>
+		<td colspan="2"><label><input type="checkbox" value="0" class="write"> Write Sonic 3 data.</label></td>
+	</tr></thead>
+	<tbody><tr>
+		<th>Type:</th>
+		<td><label><input type="checkbox" class="new"> New</label></td>
+	</tr>
+	<tr>
+		<th>Character:</th>
+		<td><button type="button" value="0" class="character sonictails"><span>Sonic &amp; Tails</span></button>
+		<button type="button" value="1" class="character sonic"><span>Sonic</span></button>
+		<button type="button" value="2" class="character tails"><span>Tails</span></button>
+		<button type="button" value="3" class="advanced character knuckles" hidden="hidden"><span>Knuckles</span></button></td>
+	</tr>
+	<tr>
+		<th>Stage:</th>
+		<td><button type="button" value="-1" class="prev arrow">&larr;</button>
+		<img src="images/static.png" alt="[Zone Preview]" class="preview">
+		<button type="button" value="1" class="next arrow">&rarr;</button>
+		<select class="zone">
+			<option value="0">Angel Island</option>
+			<option value="1">Hydrocity</option>
+			<option value="2">Marble Garden</option>
+			<option value="3">Carnival Night</option>
+			<option value="4" class="advanced" hidden="hidden">Flying Battery</option>
+			<option value="5">Ice Cap</option>
+			<option value="6">Launch Base</option>
+		</select>
+		<label><input type="checkbox" class="clear"> Clear</label></td>
+	</tr>
+	<tr>
+		<th>Emeralds:</th>
+		<td><button type="button" class="empty emerald green" value="128"><span>Green</span></button>
+		<button type="button" class="empty emerald orange" value="64"><span>Orange</span></button>
+		<button type="button" class="empty emerald pink" value="32"><span>Pink</span></button>
+		<button type="button" class="empty emerald purple" value="16"><span>Purple</span></button>
+		<button type="button" class="empty emerald grey" value="8"><span>Grey</span></button>
+		<button type="button" class="empty emerald red" value="4"><span>Red</span></button>
+		<button type="button" class="empty emerald blue" value="2"><span>Blue</span></button></td>
+	</tr>
+	<tr>
+		<th>Giant Rings:</th>
+		<td><button type="button" class="ring" value="0"><span>1</span></button>
+		<button type="button" class="ring" value="1"><span>2</span></button>
+		<button type="button" class="ring" value="2"><span>3</span></button>
+		<button type="button" class="ring" value="3"><span>4</span></button>
+		<button type="button" class="ring" value="4"><span>5</span></button>
+		<button type="button" class="ring" value="5"><span>6</span></button>
+		<button type="button" class="ring" value="6"><span>7</span></button>
+		<button type="button" class="ring" value="7"><span>8</span></button>
+		<p><label>Next Special Stage: <input type="number" min="1" max="7" value="1" id="specialStage"></label></p></td>
+	</tr></tbody>
+</table>
+<table id="s3k">
+	<thead><tr>
+		<td colspan="2"><label><input type="checkbox" value="1" class="write" checked="checked"> Write Sonic 3 &amp; Knuckles data.</label></td>
+	</tr></thead>
+	<tbody><tr>
+		<th>Type:</th>
+		<td><label><input type="checkbox" class="new"> New</label></td>
+	</tr>
+	<tr>
+		<th>Character:</th>
+		<td><button type="button" value="0" class="character sonictails"><span>Sonic &amp; Tails</span></button>
+		<button type="button" value="1" class="character sonic"><span>Sonic</span></button>
+		<button type="button" value="2" class="character tails"><span>Tails</span></button>
+		<button type="button" value="3" class="character knuckles"><span>Knuckles</span></button>
+		<button type="button" value="4" class="air character knucklestails" hidden="hidden"><span>Knuckles &amp; Tails</span></button>
+		<button type="button" value="5" class="advanced character blueknuckles" hidden="hidden"><span>Blue Knuckles</span></button></td>
+	</tr>
+	<tr>
+		<th>Stage:</th>
+		<td><button type="button" value="-1" class="prev arrow">&larr;</button>
+		<img src="images/static.png" alt="[Preview]" class="preview">
+		<button type="button" value="1" class="next arrow">&rarr;</button>
+		<select class="zone">
+			<option value="0">Angel Island</option>
+			<option value="1">Hydrocity</option>
+			<option value="2">Marble Garden</option>
+			<option value="3">Carnival Night</option>
+			<option value="4">Ice Cap</option>
+			<option value="5">Launch Base</option>
+			<option value="6">Mushroom Hill</option>
+			<option value="7">Flying Battery</option>
+			<option value="8">Sandopolis</option>
+			<option value="9">Lava Reef</option>
+			<option value="10">Hidden Palace</option>
+			<option value="11">Sky Sanctuary</option>
+			<option value="12">Death Egg</option>
+			<option value="13">The Doomsday</option>
+		</select>
+		<label><input type="checkbox" class="clear"> Clear</label></td>
+	</tr>
+	<tr>
+		<th>Emeralds:</th>
+		<td><button type="button" class="empty emerald green" value="6"><span>Green</span></button>
+		<button type="button" class="empty emerald orange" value="4"><span>Orange</span></button>
+		<button type="button" class="empty emerald pink" value="2"><span>Pink</span></button>
+		<button type="button" class="empty emerald purple" value="0"><span>Purple</span></button>
+		<button type="button" class="empty emerald grey" value="6"><span>Grey</span></button>
+		<button type="button" class="empty emerald red" value="4"><span>Red</span></button>
+		<button type="button" class="empty emerald blue" value="2"><span>Blue</span></button></td>
+	</tr>
+	<tr>
+		<th>Lives:</th>
+		<td><input type="number" min="1" max="99" value="3" id="lives"></td>
+	</tr>
+	<tr>
+		<th>Continues:</th>
+		<td><input type="number" min="0" max="99" value="0" id="continues"></td>
+	</tr>
+	<tr>
+		<th>Giant Rings:</th>
+		<td><button type="button" class="ring" value="0"><span>1</span></button>
+		<button type="button" class="ring" value="1"><span>2</span></button>
+		<button type="button" class="ring" value="2"><span>3</span></button>
+		<button type="button" class="ring" value="3"><span>4</span></button>
+		<button type="button" class="ring" value="4"><span>5</span></button>
+		<button type="button" class="ring" value="5"><span>6</span></button>
+		<button type="button" class="ring" value="6"><span>7</span></button>
+		<button type="button" class="ring" value="7"><span>8</span></button></td>
+	</tr></tbody>
+</table></section>
+<section id="competition"><h2>Competition</h2>
+<div><button type="button" value="0" id="azure" class="tab stage active">Azure Lake</button>
+<button type="button" value="1" id="balloon" class="tab stage">Balloon Park</button>
+<button type="button" value="3" id="chrome" class="tab stage">Chrome Gadget</button>
+<button type="button" value="2" id="desert" class="tab stage">Desert Palace</button>
+<button type="button" value="4" id="endless" class="tab stage">Endless Mine</button></div>
+<table>
+	<tbody><tr id="row0">
+		<th>1st:</th>
+		<td><label><input type="checkbox" value="0" class="new"> New</label>
+		<input type="number" min="0" max="9" value="0" class="min">&prime;
+		<input type="number" min="0" max="59" value="0" class="sec">&Prime;
+		<input type="number" min="0" max="99" value="0" class="tick">
+		<button type="button" value="0" class="character sonic"><span>Sonic</span></button>
+		<button type="button" value="1" class="character tails"><span>Tails</span></button>
+		<button type="button" value="2" class="character knuckles"><span>Knuckles</span></button></td>
+	</tr>
+	<tr id="row1">
+		<th>2nd:</th>
+		<td><label><input type="checkbox" value="1" class="new"> New</label>
+		<input type="number" min="0" max="9" value="0" class="min">&prime;
+		<input type="number" min="0" max="59" value="0" class="sec">&Prime;
+		<input type="number" min="0" max="99" value="0" class="tick">
+		<button type="button" value="0" class="character sonic"><span>Sonic</span></button>
+		<button type="button" value="1" class="character tails"><span>Tails</span></button>
+		<button type="button" value="2" class="character knuckles"><span>Knuckles</span></button></td>
+	</tr>
+	<tr id="row2">
+		<th>3rd:</th>
+		<td><label><input type="checkbox" value="2" class="new"> New</label>
+		<input type="number" min="0" max="9" value="0" class="min">&prime;
+		<input type="number" min="0" max="59" value="0" class="sec">&Prime;
+		<input type="number" min="0" max="99" value="0" class="tick">
+		<button type="button" value="0" class="character sonic"><span>Sonic</span></button>
+		<button type="button" value="1" class="character tails"><span>Tails</span></button>
+		<button type="button" value="2" class="character knuckles"><span>Knuckles</span></button></td>
+	</tr></tbody>
+</table></section>
+<section id="save"><h2>Save Game</h2>
+<table class="advanced" hidden="hidden"><tr><th>Data size:</th><td><label><input type="radio" value="0" id="byte" class="dataSize" name="dataSize"> Byte</label></td><td><label><input type="radio" value="1" id="word" class="dataSize" name="dataSize" checked="checked"> Word</label></td></tr>
+<tr><th>Filler byte:</th><td><label><input type="radio" value="0" id="b00" class="fillerByte" name="fillerByte" checked="checked"> $00</label></td><td><label><input type="radio" value="255" id="bff" class="fillerByte" name="fillerByte"> $FF</label></td></tr>
+<tr><th>Byte order:</th><td><label><input type="radio" value="0" id="little" class="byteOrder" name="byteOrder"> Little endian</label></td><td><label><input type="radio" value="1" id="big" class="byteOrder" name="byteOrder" checked="checked"> Big endian</label></td></tr></table>
+<div><button type="button" id="download">Save</button>
+<button type="button" id="reset">Reset</button></div>
+<div><a id="link">Download</a></div></section>
+<div id="hexview" class="overlay"><div><div id="col"></div><div id="hex"></div><div id="asc"></div></div>
+<p><button type="button" class="close"><img src="layout/close.svg" alt="[Close]" title="Close"></button></p></div>
+<div id="error" class="overlay"><div><img src="images/chuckles.png" alt="Error" id="chuckles"></div>
+<p>An unknown error has occurred.</p>
+<p><button type="button" class="close"><img src="layout/close.svg" alt="[Close]" title="Close"></button></p></div></main>
+<footer>Created by <a href="mailto:jcfields@jcfields.dev">J.C. Fields</a>. Hosted by <a href="https://github.com/jcfieldsdev/sonic3-save-editor">GitHub</a>.</footer></body></html>

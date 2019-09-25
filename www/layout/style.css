@@ -1,0 +1,559 @@
+@font-face {
+	font-family: Andes;
+	font-style: normal;
+	font-weight: normal;
+	src: url(fonts/Andes.woff2) format("woff2");
+}
+
+@font-face {
+	font-family: Dosis;
+	font-style: normal;
+	font-weight: normal;
+	src: url(fonts/Dosis-Light.woff2) format("woff2");
+}
+
+@font-face {
+	font-family: Dosis;
+	font-style: normal;
+	font-weight: bold;
+	src: url(fonts/Dosis-Bold.woff2) format("woff2");
+}
+
+@font-face {
+	font-family: NiseSegaSonic;
+	font-style: normal;
+	font-weight: normal;
+	src: url(fonts/NiseSegaSonic.woff2) format("woff2");
+}
+
+a {
+	background: none;
+	color: #800000;
+	font-weight: bold;
+}
+
+a, button:hover {
+	cursor: pointer;
+}
+
+a#link, button span, section#load h2, section#save h2 {
+	display: none;
+}
+
+a:hover, a:active {
+	background: none;
+	color: #f00;
+	transition: 0.5s color;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	background: none;
+	border: 0;
+	border-radius: 1em;
+	color: inherit;
+	font-size: 0.8rem;
+}
+
+button, input, select {
+	font-family: inherit;
+}
+
+button#azure {
+	background-image: url(../images/stage-azure.png);
+}
+
+button#balloon {
+	background-image: url(../images/stage-balloon.png);
+}
+
+button#chrome {
+	background-image: url(../images/stage-chrome.png);
+}
+
+button#desert {
+	background-image: url(../images/stage-desert.png);
+}
+
+button#endless {
+	background-image: url(../images/stage-endless.png);
+}
+
+button#sonic3 {
+	background-image: url(../images/game-sonic3.svg);
+}
+
+button#sonic3k {
+	background-image: url(../images/game-s&k.svg);
+}
+
+button.arrow {
+	background: #400000;
+	border-radius: 0;
+	color: inherit;
+	height: 112px;
+}
+
+button.arrow:hover {
+	background: #800000;
+	color: inherit;
+}
+
+button.arrow:active {
+	background: #c00000;
+	color: inherit;
+}
+
+button.chaos, button.empty {
+	background-size: 24px 24px;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+
+button.chaos.blue {
+	background-image: url(../images/chaos-blue.png);
+}
+
+button.chaos.green {
+	background-image: url(../images/chaos-green.png);
+}
+
+button.chaos.grey {
+	background-image: url(../images/chaos-grey.png);
+}
+
+button.chaos.orange {
+	background-image: url(../images/chaos-orange.png);
+}
+
+button.chaos.pink {
+	background-image: url(../images/chaos-pink.png);
+}
+
+button.chaos.purple {
+	background-image: url(../images/chaos-purple.png);
+}
+
+button.chaos.red {
+	background-image: url(../images/chaos-red.png);
+}
+
+button.character {
+	box-sizing: border-box;
+	color: inherit;
+	height: 48px;
+	margin: 0.5em;
+	width: 48px;
+}
+
+button.character.active {
+	border: 1px solid #fff;
+}
+
+button.character.blueknuckles {
+	background-image: url(../images/character-blueknuckles.png);
+}
+
+button.character.knuckles {
+	background-image: url(../images/character-knuckles.png);
+}
+
+button.character.knucklestails {
+	background-image: url(../images/character-knucklestails.png);
+}
+
+button.character.knucklestails, button.character.sonictails {
+	width: 54px;
+}
+
+button.character.sonic {
+	background-image: url(../images/character-sonic.png);
+}
+
+button.character.sonictails {
+	background-image: url(../images/character-sonictails.png);
+}
+
+button.character.tails {
+	background-image: url(../images/character-tails.png);
+}
+
+button.close {
+	border-radius: 0;
+}
+
+button.close img {
+	height: 32px;
+	width: 32px;
+}
+
+button.close:hover {
+	background: none;
+	color: inherit;
+}
+
+button.emerald {
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	color: inherit;
+	height: 32px;
+	padding: 2em;
+	width: 48px;
+}
+
+button.empty {
+	background-image: url(../images/chaos-off.png);
+}
+
+button.game {
+	background-position: 0.5em 50%;
+	background-size: 2em 2em;
+	padding: 1em 1em 1em 3em;
+}
+
+button.game.active, button.platform.active, button.tab.active {
+	background-color: #404040;
+}
+
+button.palace {
+	background-image: url(../images/super-off.png);
+}
+
+button.platform {
+	border-radius: 0.5em;
+	margin: 0 0.25em 1em;
+	padding: 0.5em;
+	width: 6em;
+}
+
+button.ring {
+	background: url(../images/ring-off.png);
+	color: inherit;
+	height: 64px;
+	margin: 0.25em;
+	width: 64px;
+}
+
+button.ring span {
+	display: inline;
+}
+
+button.ring.active {
+	background-image: url(../images/ring-on.png);
+}
+
+button.slot {
+	background-position: 0 25%;
+	padding: 1em 1em 1em 3em;
+	text-align: right;
+}
+
+button.slot.knuckles {
+	background-image: url(../images/tab-knuckles.png);
+}
+
+button.slot.sonic {
+	background-image: url(../images/tab-sonic.png);
+}
+
+button.slot.sonictails {
+	background-image: url(../images/tab-sonictails.png);
+}
+
+button.slot.knucklestails {
+	background-image: url(../images/tab-knucklestails.png);
+}
+
+button.slot.tails {
+	background-image: url(../images/tab-tails.png);
+}
+
+button.stage {
+	background-position: 1em 50%;
+	background-size: 32px 24px;
+	padding: 1em 1em 1em 4.5em;
+}
+
+button.super.blue {
+	background-image: url(../images/super-blue.png);
+}
+
+button.super.green {
+	background-image: url(../images/super-green.png);
+}
+
+button.super.grey {
+	background-image: url(../images/super-grey.png);
+}
+
+button.super.orange {
+	background-image: url(../images/super-orange.png);
+}
+
+button.super.pink {
+	background-image: url(../images/super-pink.png);
+}
+
+button.super.purple {
+	background-image: url(../images/super-purple.png);
+}
+
+button.super.red {
+	background-image: url(../images/super-red.png);
+}
+
+button.tab {
+	background-color: #202020;
+	background-repeat: no-repeat;
+	border-radius: 1.5em 1.5em 0 0;
+	color: inherit;
+	font-weight: bold;
+	line-height: 100%;
+	margin: 0;
+}
+
+button:hover {
+	background-color: #303030;
+	color: inherit;
+	transition: 0.2s background;
+}
+
+button[disabled] {
+	cursor: default;
+}
+
+button[disabled], input[disabled], select[disabled] {
+	opacity: 0.2;
+}
+
+div#col {
+	background: #202020;
+	color: inherit;
+}
+
+div#col, div#hex {
+	border-right: 1px solid #808080;
+}
+
+div#error {
+	width: 24em;
+}
+
+div#error p {
+	margin-bottom: 2em;
+}
+
+div#hexview {
+	max-height: 80%;
+	overflow: auto;
+}
+
+div#hexview>div {
+	display: flex;
+	padding: 1em;
+	text-align: left;
+}
+
+div#hexview>div div {
+	font-family: "Lucida Console", "Courier New", monospace;
+	padding: 0 1em;
+	white-space: pre;
+}
+
+div#tabs {
+	display: flex;
+	justify-content: space-between;
+}
+
+div.overlay {
+	background: #000;
+	border: 1px solid #fff;
+	box-shadow: 4px 4px #fff;
+	color: inherit;
+	left: 50%;
+	opacity: 0;
+	position: fixed;
+	text-align: center;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	visibility: hidden;
+	z-index: 2;
+}
+
+div.overlay.open {
+	opacity: 1;
+	transition: 0.5s opacity;
+	visibility: visible;
+}
+
+footer {
+	font-size: 0.8rem;
+	margin: 1em 0;
+	text-align: center;
+}
+
+h1 {
+	font-size: 3rem;
+	margin: 1em;
+}
+
+h1, h2 {
+	font-family: Andes, sans-serif;
+	font-weight: normal;
+	text-align: center;
+	text-shadow: 1px 1px #000, 2px 2px #606060;
+}
+
+h2 {
+	font-size: 2.5rem;
+	margin: 1.5em 0;
+}
+
+html {
+	background: #000 url(bg.svg);
+	color: #fff;
+	font: 12pt/150% Dosis, Helvetica, sans-serif;
+	padding: 0;
+}
+
+img {
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+}
+
+img#chuckles {
+	height: 40px;
+	margin-top: 1em;
+	width: 32px;
+}
+
+img.preview {
+	height: 112px;
+	vertical-align: bottom;
+	width: 160px;
+}
+
+input.tick, section#competition label {
+	margin-right: 2em;
+}
+
+input#score {
+	width: 6em;
+}
+
+input[type="number"] {
+	font-size: 0.9rem;
+	text-align: center;
+	width: 4em;
+}
+
+input[type="number"], input[type="text"], select {
+	background: #202020;
+	border: 2px solid #404040;
+	color: inherit;
+	padding: 0.25em;
+}
+
+label {
+	margin: 0 0.25em;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+label, th {
+	font-weight: bold;
+}
+
+main {
+	margin: 0 auto;
+	text-shadow: 1px 1px #404040;
+	width: 48em;
+}
+
+noscript, section#load div, section#save div {
+	text-align: center;
+}
+
+section#load, section#save {
+	background: linear-gradient(to right,
+		rgba(32, 32, 32, 0),
+		rgba(32, 32, 32, 1) 20%,
+		rgba(32, 32, 32, 1) 80%,
+		rgba(32, 32, 32, 0)
+	);
+}
+
+section#load div {
+	margin: 1em 0;
+}
+
+section#load table, section#save table {
+	background: none;
+	border: 0;
+	color: inherit;
+	margin: 1em auto;
+	width: auto;
+}
+
+section#save {
+	margin: 4em 0;
+}
+
+section#save button {
+	border-radius: 0;
+	padding: 1em 4em;
+}
+
+select {
+	border-radius: 0.5em;
+	font-size: inherit;
+	text-align: center;
+	width: 8em;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+select.zone {
+	margin: 0 1em;
+}
+
+span.title {
+	background: none;
+	color: #ff0;
+	font-family: NiseSegaSonic, sans-serif;
+	margin-right: 0.5em;
+}
+
+table {
+	border: 4px solid #404040;
+	border-collapse: collapse;
+	border-radius: 0 1em 1em 1em;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+td, th {
+	padding: 0.25em 0.5em;
+	white-space: nowrap;
+}
+
+th {
+	text-align: left;
+	vertical-align: center;
+}
+
+thead td {
+	font-style: italic;
+	text-align: center;
+}
+
+tr:nth-child(2n) {
+	background: #202020;
+	color: inherit;
+}
